@@ -140,6 +140,7 @@ E List<E>::PULL()
     E temp = Delete->data;
     Head = Head->next;
     delete Delete;
+    Count--;
     return temp;
 }
 
@@ -571,7 +572,7 @@ void List<E>::Print()
 
 int main()
 {
-    List<int> L;
+    List<int> Q;
 
     const int n = 10;
   int a[n] = { 0,1,2,3,4,5,6,7,8,9 };
@@ -580,18 +581,19 @@ int main()
     for (int i = 0; i < n; i++)
     {
     
-        L.AddTail(a[i]);
+        Q.AddTail(a[i]);
     }
 
     // Распечатка списка
     cout << "List L:\n";
-    L.Print();
+    Q.Print();
 
     cout << endl;
 
     for (int i = 0; i < 10; i++) {
-        assert(i == L.PULL());
+        assert(i == Q.PULL());
     }
+    assert(0 == Q.GetCount());
 
 
 
