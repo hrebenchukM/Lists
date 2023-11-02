@@ -2,7 +2,6 @@
 #include <cassert>
 using namespace std;
 
-
 struct Element
 {
 	// Данные
@@ -177,35 +176,37 @@ void List::Print()
 
 
 
+//
+//// Тестовый пример
+//int main()
+//{
+//	// Создаем объект класса List
+//	List lst;
+//
+//	// Тестовая строка
+//	char s[] = "Hello, World !!!";
+//	// Выводим строку
+//	cout << s << "\n\n";
+//	// Определяем длину строки
+//	int len = strlen(s);
+//	// Загоняем строку в список
+//	for (int i = 0; i < len; i++)
+//		lst.Add(s[i]);
+//	// Распечатываем содержимое списка
+//	lst.Print();
+//	// Удаляем три элемента списка
+//	//lst.Del();
+//	//lst.Del();
+//	//lst.Del();
+//	////Распечатываем содержимое списка
+//	//lst.Print();
+//
+//	lst.AddElemInPos('*', 1);
+//	lst.AddElemInPos('?', 15);
+//	lst.Print();
+//
+//	assert(15 == lst.SearchElem('?'));
+//}
+//
 
-// Тестовый пример
-int main()
-{
-	// Создаем объект класса List
-	List lst;
-
-	// Тестовая строка
-	char s[] = "Hello, World !!!";
-	// Выводим строку
-	cout << s << "\n\n";
-	// Определяем длину строки
-	int len = strlen(s);
-	// Загоняем строку в список
-	for (int i = 0; i < len; i++)
-		lst.Add(s[i]);
-	// Распечатываем содержимое списка
-	lst.Print();
-	// Удаляем три элемента списка
-	//lst.Del();
-	//lst.Del();
-	//lst.Del();
-	////Распечатываем содержимое списка
-	//lst.Print();
-
-	lst.AddElemInPos('*', 1);
-	lst.AddElemInPos('?', 15);
-	lst.Print();
-
-	assert(15 == lst.SearchElem('?'));
-}
 
