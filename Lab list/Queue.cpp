@@ -11,7 +11,7 @@ struct Elem
 
 
 template<typename E>
-class List
+class Queue
 {
     // Голова, хвост
     Elem<E>* Head, * Tail;
@@ -21,11 +21,11 @@ class List
 public:
 
     // Конструктор
-    List();
+    Queue();
     // Конструктор копирования
-    List(const List&);
+    Queue(const Queue&);
     // Деструктор
-    ~List();
+    ~Queue();
 
 
 
@@ -72,7 +72,7 @@ public:
 };
 
 template<typename E>
-List<E>::List()
+Queue<E>::Queue()
 {
     // Изначально список пуст
     Head = Tail = NULL;
@@ -81,7 +81,7 @@ List<E>::List()
 
 
 template<typename E>
-List<E>::List(const List<E>& L)
+Queue<E>::Queue(const Queue<E>& L)
 {
     Head = Tail = NULL;
     Count = 0;
@@ -99,7 +99,7 @@ List<E>::List(const List<E>& L)
 
 
 template<typename E>
-List<E>::~List()
+Queue<E>::~Queue()
 {
     // Удаляем все элементы
     DelAll();
@@ -107,7 +107,7 @@ List<E>::~List()
 
 
 template<typename E>
-void List<E>::AddTail(E n)
+void Queue<E>::AddTail(E n)
 {
     // Создаем новый элемент
     Elem<E>* temp = new Elem<E>;
@@ -134,7 +134,7 @@ void List<E>::AddTail(E n)
 
 
 template<typename E>
-E List<E>::PULL()
+E Queue<E>::PULL()
 {
     Elem<E>* Delete = Head;
     E temp = Delete->data;
@@ -147,7 +147,7 @@ E List<E>::PULL()
 
 
 template<typename E>
-void List<E>::DelAll()
+void Queue<E>::DelAll()
 {
     // Пока остаются элементы, удаляем по одному с головы
     while (Count != 0)
@@ -155,14 +155,14 @@ void List<E>::DelAll()
 }
 
 template<typename E>
-int List<E>::GetCount()
+int Queue<E>::GetCount()
 {
     return Count;
 }
 
 
 template<typename E>
-void List<E>::Print()
+void Queue<E>::Print()
 {
     // Если в списке присутствуют элементы, то пробегаем по нему
     // и печатаем элементы, начиная с головного
@@ -179,6 +179,41 @@ void List<E>::Print()
         cout << temp->data << " )\n";
     }
 }
+
+
+
+
+
+
+int main()
+{
+    Queue<int> Q;
+
+    const int n = 10;
+    int a[n] = { 0,1,2,3,4,5,6,7,8,9 };
+
+
+    for (int i = 0; i < n; i++)
+    {
+
+        Q.AddTail(a[i]);
+    }
+
+    // Распечатка списка
+    cout << "List L:\n";
+    Q.Print();
+
+    cout << endl;
+
+    for (int i = 0; i < 10; i++) {
+        assert(i == Q.PULL());
+    }
+    assert(0 == Q.GetCount());
+
+
+
+}
+
 
 //
 //template<typename E>
@@ -590,58 +625,3 @@ void List<E>::Print()
 
 
 
-
-
-
-//int main()
-//{
-//    List<int> Q;
-//
-//    const int n = 10;
-//  int a[n] = { 0,1,2,3,4,5,6,7,8,9 };
-//
-//
-//    for (int i = 0; i < n; i++)
-//    {
-//    
-//        Q.AddTail(a[i]);
-//    }
-//
-//    // Распечатка списка
-//    cout << "List L:\n";
-//    Q.Print();
-//
-//    cout << endl;
-//
-//    for (int i = 0; i < 10; i++) {
-//        assert(i == Q.PULL());
-//    }
-//    assert(0 == Q.GetCount());
-//
-//
-//
-//
-//   // // Вставка элемента в список
-//   //// L.Insert();
-//   // // Распечатка списка
-//   // cout << "List L:\n";
-//   // L.Print();
-//
-//   // // Распечатка 2-го и 8-го элементов списка
-//   // L.Print(2);
-//   // L.Print(8);
-//
-//   // List<int> T;
-//
-//    // Копируем список
-//    //T = L;
-//    // Распечатка копии
-//   // cout << "List T:\n";
-//    //T.Print();
-//
-//    // Складываем два списка (первый в перевернутом состоянии)
-//   // cout << "List Sum:\n";
-//  //  List<int> Sum = -L + T;
-//    // Распечатка списка
-//   // Sum.Print();
-//}
